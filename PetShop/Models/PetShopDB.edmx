@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PetShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Foods">
+          <Key>
+            <PropertyRef Name="FoodID" />
+          </Key>
+          <Property Name="FoodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="FoodType" Type="nvarchar" MaxLength="10" />
+          <Property Name="FoodInfo" Type="nvarchar" MaxLength="10" />
+          <Property Name="FoodNotes" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Pets">
+          <Key>
+            <PropertyRef Name="PetID" />
+          </Key>
+          <Property Name="PetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PetName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PetType" Type="nvarchar" MaxLength="100" />
+          <Property Name="PetWeight" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="PetShopModelStoreContainer">
+          <EntitySet Name="Foods" EntityType="Self.Foods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pets" EntityType="Self.Pets" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PetShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Food">
+          <Key>
+            <PropertyRef Name="FoodID" />
+          </Key>
+          <Property Name="FoodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FoodType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FoodInfo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FoodNotes" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Pet">
+          <Key>
+            <PropertyRef Name="PetID" />
+          </Key>
+          <Property Name="PetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PetName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PetType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PetWeight" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="PetShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Foods" EntityType="Self.Food" />
+          <EntitySet Name="Pets" EntityType="Self.Pet" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PetShopModelStoreContainer" CdmEntityContainer="PetShopEntities">
+          <EntitySetMapping Name="Foods">
+            <EntityTypeMapping TypeName="PetShopModel.Food">
+              <MappingFragment StoreEntitySet="Foods">
+                <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+                <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+                <ScalarProperty Name="FoodType" ColumnName="FoodType" />
+                <ScalarProperty Name="FoodInfo" ColumnName="FoodInfo" />
+                <ScalarProperty Name="FoodNotes" ColumnName="FoodNotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pets">
+            <EntityTypeMapping TypeName="PetShopModel.Pet">
+              <MappingFragment StoreEntitySet="Pets">
+                <ScalarProperty Name="PetID" ColumnName="PetID" />
+                <ScalarProperty Name="PetName" ColumnName="PetName" />
+                <ScalarProperty Name="PetType" ColumnName="PetType" />
+                <ScalarProperty Name="PetWeight" ColumnName="PetWeight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

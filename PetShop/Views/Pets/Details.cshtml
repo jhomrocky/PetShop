@@ -1,0 +1,72 @@
+﻿@model PetShop.Models.PetFoodViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pet.PetName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pet.PetName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pet.PetType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pet.PetType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pet.PetWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pet.PetWeight)
+        </dd>
+
+    </dl>
+    <h3>Food Info</h3>
+@foreach (var item in Model.food)
+{
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => item.FoodName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => item.FoodName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => item.FoodType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => item.FoodType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => item.FoodInfo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => item.FoodInfo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => item.FoodNotes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => item.FoodNotes)
+        </dd>
+    </dl>
+}
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pet.PetID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
